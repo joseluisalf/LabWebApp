@@ -1,0 +1,108 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+}
+
+.contenedor {
+  display: flex;
+  flex: 1;
+}
+
+.graficos {
+  flex: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.panel-control {
+  flex: 1;
+  background: #f0f0f0;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-superior {
+  flex: 1;
+}
+
+.panel-inferior {
+  flex: 1;
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+.fila {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.grupo-dosis-hierro {
+    margin-left: 30px;
+}
+
+.grupo-dosis-citrato {
+    margin-left: 30px;
+}
+
+.grupo-control-uv {
+  margin-right: 20px;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.grupo-control-shaker {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fila input {
+  width: 60px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.fila button {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.fila-centro {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Colores para ON/OFF */
+#btnUV.ON, #btnShaker.ON {
+  background-color: #4caf50;
+  color: white;
+}
+
+#btnUV.OFF, #btnShaker.OFF {
+  background-color: #f44336;
+  color: white;
+}
+
+canvas {
+  background: #f8f8f8;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  font-size: 16px;
+  padding: 12px 24px;
+  margin: 10px;
+  cursor: pointer;
+}

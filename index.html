@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard de Sensores</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="contenedor">
+    <div class="graficos">
+      <div><h3>pH</h3><canvas id="graficoPh"></canvas></div>
+      <div><h3>Conductividad</h3><canvas id="graficoCond"></canvas></div>
+      <div><h3>Temperatura</h3><canvas id="graficoTemp"></canvas></div>
+      <div><h3>Turbidez</h3><canvas id="graficoTurb"></canvas></div>
+    </div>
+    <div class="panel-control">
+      <div class="panel-superior">
+        <h3>Sección de control</h3>
+        <div class="fila">
+          <div class="grupo-dosis-hierro">
+            <label for="hierro">Hierro (mL):</label>
+            <input type="number" id="hierro">
+            <button onclick="enviarOK('hierro')">OK</button>
+          </div>
+          <div class="grupo-control-uv">
+            <label>UV:</label>
+            <button id="btnUV" onclick="toggleDispositivo('uv', 'btnUV')">ON</button>
+          </div>
+        </div>
+        <div class="fila">
+          <div class="grupo-dosis-citrato">
+            <label for="citrato">Citrato (mL):</label>
+            <input type="number" id="citrato">
+            <button onclick="enviarOK('citrato')">OK</button>
+          </div>
+          <div class="grupo-control-shaker">
+            <label>Shaker:</label>
+            <button id="btnShaker" onclick="toggleDispositivo('shaker', 'btnShaker')">ON</button>
+          </div>
+        </div>
+        <div class="fila fila-centro">
+          <button onclick="publicarAccion('iniciar')">Iniciar</button>
+          <button onclick="publicarAccion('reanudar')">Reanudar</button>
+        </div>
+      </div>
+      <div class="panel-inferior">
+        <!-- Puedes agregar más controles aquí -->
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
