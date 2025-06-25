@@ -1,4 +1,9 @@
-const client = mqtt.connect("ws://localhost:9001");
+
+const client = mqtt.connect('wss://c716f0944e684366a99bddcfc868dcbe.s1.eu.hivemq.cloud:8884/mqtt', {
+    username: 'alfonso',
+    password: 'lA2240#%'
+});
+
 
 function crearGrafico(ctx, etiqueta, color) {
   return new Chart(ctx, {
