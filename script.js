@@ -55,10 +55,27 @@ client.on("message", (topic, message) => {
   if (topic === "sensores/datos") {
     try {
       const datos = JSON.parse(message.toString());
-      if (datos.ph !== undefined) agregarDato(grafPh, datos.ph);
-      if (datos.temperatura !== undefined) agregarDato(grafTemp, datos.temperatura);
-      if (datos.conductividad !== undefined) agregarDato(grafCond, datos.conductividad);
-      if (datos.turbidez !== undefined) agregarDato(grafTurb, datos.turbidez);
+
+      if (datos.ph !== undefined) {
+        agregarDato(grafPh, datos.ph);
+        document.getElementById("ph-value").textContent = datos.ph.toFixed(2);
+      }
+
+      if (datos.temperatura !== undefined) {
+        agregarDato(grafTemp, datos.temperatura);
+        document.getElementById("temperatura-value").textContent = datos.temperatura.toFixed(2) + " °C";
+      }
+
+      if (datos.conductividad !== undefined) {
+        agregarDato(grafCond, datos.conductividad);
+        document.getElementById("conductividad-value").textContent = datos.conductividad.toFixed(2) + " µS/cm";
+      }
+
+      if (datos.turbidez !== undefined) {
+        agregarDato(grafTurb, datos.turbidez);
+        document.getElementById("turbidez-value").textContent = datos.turbidez.toFixed(2) + " NTU";
+      }
+
     } catch (e) {
       console.error("❌ Error al parsear JSON:", e);
     }
