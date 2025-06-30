@@ -68,20 +68,67 @@ body {
   gap: 8px;
 }
 
-.grupo-ph {
-    margin-left: 30px;
+.medidas-sensores {
+  margin-top: -5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 30px;
+
+  background-color: #e6f2ff; /* Azul clarito, cambia a tu gusto */
+  padding: 10px;             /* Espacio interno para que no esté todo pegado */
+  border-radius: 8px;        /* Bordes redondeados para mejor estética */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: inline-block;
 }
 
-.grupo-conductividad {
-    margin-left: 30px;
+.medidas-sensores div {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  font-size: 16px;
+  margin-bottom: 13px; /* Espacio entre líneas */
 }
 
-.grupo-temperatura {
-    margin-left: 30px;
+.medidas-sensores label {
+  font-weight: bold;
 }
 
-.grupo-turbidez {
-    margin-left: 30px;
+.contenedor-flex {
+  display: flex;
+  gap: 40px; /* Espacio entre columna de sensores y columna de botones */
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.columna-botones {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  gap: 1px; /* Espacio entre los botones (ajustable) */
+  /*height: 100%; /* O define un alto fijo si quieres más control */
+  margin-top: 5px;
+}
+
+.boton-columna {
+  background-color: #007BFF;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton-columna:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.boton-columna:active {
+  transform: scale(0.97);
 }
 
 .fila input {
@@ -94,11 +141,13 @@ body {
   padding: 6px 12px;
   font-size: 14px;
 }
+/*
 
 .fila-centro {
   justify-content: center;
   margin-top: 20px;
 }
+  /*
 
 /* Colores para ON/OFF */
 #btnUV.ON, #btnShaker.ON {
