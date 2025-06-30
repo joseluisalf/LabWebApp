@@ -63,17 +63,17 @@ client.on("message", (topic, message) => {
 
       if (datos.temperatura !== undefined) {
         agregarDato(grafTemp, datos.temperatura);
-        document.getElementById("temperatura-value").textContent = datos.temperatura.toFixed(2) + " °C";
+        document.getElementById("temperatura-value").textContent = datos.temperatura.toFixed(2); // + " °C";
       }
 
       if (datos.conductividad !== undefined) {
         agregarDato(grafCond, datos.conductividad);
-        document.getElementById("conductividad-value").textContent = datos.conductividad.toFixed(2) + " µS/cm";
+        document.getElementById("conductividad-value").textContent = datos.conductividad.toFixed(2); // + " µS/cm";
       }
 
       if (datos.turbidez !== undefined) {
         agregarDato(grafTurb, datos.turbidez);
-        document.getElementById("turbidez-value").textContent = datos.turbidez.toFixed(2) + " NTU";
+        document.getElementById("turbidez-value").textContent = datos.turbidez.toFixed(2); // + " NTU";
       }
 
     } catch (e) {
