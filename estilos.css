@@ -68,6 +68,22 @@ body {
   gap: 8px;
 }
 
+.grupo-ph {
+    margin-left: 30px;
+}
+
+.grupo-conductividad {
+    margin-left: 30px;
+}
+
+.grupo-temperatura {
+    margin-left: 30px;
+}
+
+.grupo-turbidez {
+    margin-left: 30px;
+}
+
 .fila input {
   width: 60px;
   padding: 5px;
