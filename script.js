@@ -50,6 +50,50 @@ function agregarDato(chart, valor) {
   chart.update();
 }
 
+/* ---------------------------
+   LÓGICA PARA GUARDAR EN CSV
+---------------------------- */
+let guardando = false;         // Estado de guardado
+let datosCSV = [];             // Array para almacenar los datos
+const encabezados = ["Hora", "pH", "Temperatura", "Conductividad", "Turbidez"];
+
+function toggleGuardar() {
+  const boton = document.getElementById("btnGuardar");
+
+  if (!guardando) {
+    // Iniciar guardado
+    guardando = true;
+    datosCSV = []; // Limpiar datos anteriores
+    datosCSV.push(encabezados); // Agregar encabezados
+    boton.textContent = "Detener y Descargar";
+    boton.classList.add("activo");
+    console.log("🔴 Guardado de datos iniciado...");
+  } else {
+    // Detener y descargar CSV
+    guardando = false;
+    boton.textContent = "Guardar";
+    boton.classList.remove("activo");
+    console.log("🟢 Guardado detenido. Generando archivo CSV...");
+
+    // Convertir a CSV
+    const csvContent = datosCSV.map(fila => fila.join(",")).join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+
+    // Crear enlace de descarga
+    const a = document.createElement("a");
+    a.href = url;
+    const fecha = new Date().toISOString().replace(/[:.]/g, "-");
+    a.download = obtenerNombreArchivo();
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    console.log("📂 Archivo CSV descargado.");
+  }
+}
+
+
 client.on("message", (topic, message) => {
   console.log("📩 Mensaje recibido:", topic, message.toString());
   if (topic === "sensores/datos") {
@@ -76,11 +120,34 @@ client.on("message", (topic, message) => {
         document.getElementById("turbidez-value").textContent = datos.turbidez.toFixed(2); // + " NTU";
       }
 
+      // Guardar en CSV si está activo
+      if (guardando) {
+        const horaActual = new Date().toLocaleTimeString(); // Genera la hora actual
+        
+        datosCSV.push([
+          horaActual,
+          datos.ph !== undefined ? datos.ph.toFixed(2) : "",
+          datos.temperatura !== undefined ? datos.temperatura.toFixed(2) : "",
+          datos.conductividad !== undefined ? datos.conductividad.toFixed(2) : "",
+          datos.turbidez !== undefined ? datos.turbidez.toFixed(2) : ""
+        ]);
+      }
+
     } catch (e) {
       console.error("❌ Error al parsear JSON:", e);
     }
   }
 });
+
+function obtenerNombreArchivo() {
+  const ahora = new Date();
+  const año = ahora.getFullYear();
+  const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+  const dia = String(ahora.getDate()).padStart(2, '0');
+
+  return `datos_sensores_${año}-${mes}-${dia}.csv`;
+}
+
 
 function enviarOK(idCampo) {
   const valor = document.getElementById(idCampo).value;

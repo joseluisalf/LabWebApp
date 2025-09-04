@@ -52,13 +52,21 @@
 
           <!-- Columna derecha: Botones -->
           <div class="columna-botones">
-            <button class="boton-columna" onclick="publicarAccion('iniciar')">Iniciar</button>
-            <button class="boton-columna" onclick="publicarAccion('reanudar')">Reanudar</button>
+            <button class="boton-columna" onclick="publicarAccion('referencia')">Referencia</button>
+            <button class="boton-columna" onclick="publicarAccion('inicio')">Inicio</button>
           </div>
         </div>
       </div>
       <div class="panel-inferior">
+        <h3>Medición y toma de datos</h3>
         <!-- Puedes agregar más controles aquí -->
+        <div class="botones-inferiores">
+          <button class="boton-columna" onclick="publicarAccion('medir')">Medir</button>
+          <button class="boton-columna" onclick="publicarAccion('retornar')">Retornar</button>
+        </div>
+        <div class="fila-inferior">
+          <button class="boton-columna" id="btnGuardar" onclick="toggleGuardar()">Guardar</button>
+        </div>
       </div>
     </div>
   </div>

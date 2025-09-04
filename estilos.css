@@ -34,8 +34,23 @@ body {
 }
 
 .panel-inferior {
-  flex: 1;
   border-top: 1px solid #ccc;
+  padding-top: 10px;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  min-height: 300px; /* Ajusta según tu diseño */
+}
+
+.botones-inferiores {
+  display: flex;
+  gap: 30px; /* Espacio entre botones */
+  margin-top: 40px;
+  margin-left: 120px;
+}
+
+.fila-inferior {
+  display: flex;
+  justify-content: center;
   margin-top: 20px;
 }
 
@@ -160,10 +175,17 @@ body {
   color: white;
 }
 
+#btnGuardar.activo {
+  background-color: #e74c3c; /* Rojo para indicar grabación */
+  color: white;              /* Texto blanco para contraste */
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
 button {
   font-size: 16px;
-  padding: 10px 20px;
-  margin: 8px;
+  padding: 12px 24px;
+  margin: 10px;
   cursor: pointer;
   border: none;
   border-radius: 6px;
@@ -180,13 +202,6 @@ canvas {
   background: #f8f8f8;
   padding: 10px;
   border: 1px solid #ccc;
-}
-
-button {
-  font-size: 16px;
-  padding: 12px 24px;
-  margin: 10px;
-  cursor: pointer;
 }
 
 .boton-ok {
